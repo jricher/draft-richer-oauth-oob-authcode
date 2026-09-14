@@ -3,7 +3,7 @@ title: "Out of Band Authorization Code Delivery for OAuth 2.0"
 abbrev: "OOB Auth Codes"
 category: info
 
-docname: draft-todo-yourname-protocol-latest
+docname: draft-richer-oauth-oob-authcode-latest
 submissiontype: IETF  # also: "independent", "editorial", "IAB", or "IRTF"
 number:
 date:
