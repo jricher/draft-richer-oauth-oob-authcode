@@ -7,27 +7,27 @@
 <title>Out of Band Authorization Code Delivery for OAuth 2.0</title>
 <meta content="Justin Richer" name="author">
 <meta content="
-       TODO Abstract 
+       This client-side process allows clients to use the authorization code grant type without the ability to host the redirect_uri themselves. This process creates a single copyable value that the resource owner can copy from a simple helper page into the waiting client application. 
     " name="description">
-<meta content="xml2rfc 3.34.0" name="generator">
+<meta content="xml2rfc 3.34.1" name="generator">
 <meta content="next generation" name="keyword">
 <meta content="unicorn" name="keyword">
 <meta content="AI-native" name="keyword">
-<meta content="draft-todo-yourname-protocol-latest" name="ietf.draft">
+<meta content="draft-richer-oauth-oob-authcode-latest" name="ietf.draft">
 <!-- Generator version information:
-  xml2rfc 3.34.0
+  xml2rfc 3.34.1
     Python 3.14.7
-    ConfigArgParse 1.7.5
+    ConfigArgParse 1.7.7
     google-i18n-address 3.1.1
     intervaltree 3.2.1
     Jinja2 3.1.6
     lxml 6.1.1
     natsort 8.4.0
-    platformdirs 4.11.7
+    platformdirs 4.11.10
     pycountry 24.6.1
     PyYAML 6.0.3
     requests 2.33.1
-    wcwidth 0.8.3
+    wcwidth 0.8.4
 -->
 <link href="draft-richer-oauth-oob-authcode.xml" rel="alternate" type="application/rfc+xml">
 <link href="#copyright" rel="license">
@@ -1047,7 +1047,7 @@ svg {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Richer</td>
-<td class="center">Expires 18 March 2027</td>
+<td class="center">Expires 1 April 2027</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1055,17 +1055,17 @@ svg {
 <div id="internal-metadata" class="document-information">
 <dl id="identifiers">
 <dt class="label-workgroup">Workgroup:</dt>
-<dd class="workgroup">WG Working Group</dd>
+<dd class="workgroup">Web Authorization Protocol</dd>
 <dt class="label-internet-draft">Internet-Draft:</dt>
-<dd class="internet-draft">draft-todo-yourname-protocol-latest</dd>
+<dd class="internet-draft">draft-richer-oauth-oob-authcode-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2026-09-14" class="published">14 September 2026</time>
+<time datetime="2026-09-28" class="published">28 September 2026</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Informational</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2027-03-18">18 March 2027</time></dd>
+<dd class="expires"><time datetime="2027-04-01">1 April 2027</time></dd>
 <dt class="label-authors">Author:</dt>
 <dd class="authors">
 <div class="author">
@@ -1078,7 +1078,7 @@ svg {
 <h1 id="title">Out of Band Authorization Code Delivery for OAuth 2.0</h1>
 <section id="section-abstract">
       <h2 id="abstract"><a href="#abstract" class="selfRef">Abstract</a></h2>
-<p id="section-abstract-1">TODO Abstract<a href="#section-abstract-1" class="pilcrow">¶</a></p>
+<p id="section-abstract-1">This client-side process allows clients to use the authorization code grant type without the ability to host the redirect_uri themselves. This process creates a single copyable value that the resource owner can copy from a simple helper page into the waiting client application.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
 </section>
 <section class="note rfcEditorRemove" id="section-note.1">
       <h2 id="name-about-this-document">
@@ -1086,14 +1086,15 @@ svg {
       </h2>
 <p id="section-note.1-1">This note is to be removed before publishing as an RFC.<a href="#section-note.1-1" class="pilcrow">¶</a></p>
 <p id="section-note.1-2">
-        The latest revision of this draft can be found at <span><a href="https://example.com/LATEST">https://example.com/LATEST</a></span>.
-        Status information for this document may be found at <span><a href="https://datatracker.ietf.org/doc/draft-todo-yourname-protocol/">https://datatracker.ietf.org/doc/draft-todo-yourname-protocol/</a></span>.<a href="#section-note.1-2" class="pilcrow">¶</a></p>
+        The latest revision of this draft can be found at <span><a href="https://jricher.github.io/draft-richer-oauth-oob-authcode/draft-richer-oauth-oob-authcode.html">https://jricher.github.io/draft-richer-oauth-oob-authcode/draft-richer-oauth-oob-authcode.html</a></span>.
+        Status information for this document may be found at <span><a href="https://datatracker.ietf.org/doc/draft-richer-oauth-oob-authcode/">https://datatracker.ietf.org/doc/draft-richer-oauth-oob-authcode/</a></span>.<a href="#section-note.1-2" class="pilcrow">¶</a></p>
 <p id="section-note.1-3">
         Discussion of this document takes place on the
-        WG Working Group mailing list (<span><a href="mailto:WG@example.com">mailto:WG@example.com</a></span>),
-        which is archived at <span><a href="https://example.com/WG">https://example.com/WG</a></span>.<a href="#section-note.1-3" class="pilcrow">¶</a></p>
+        Web Authorization Protocol Working Group mailing list (<span><a href="mailto:oauth@ietf.org">mailto:oauth@ietf.org</a></span>),
+        which is archived at <span><a href="https://mailarchive.ietf.org/arch/browse/oauth/">https://mailarchive.ietf.org/arch/browse/oauth/</a></span>.
+        Subscribe at <span><a href="https://www.ietf.org/mailman/listinfo/oauth/">https://www.ietf.org/mailman/listinfo/oauth/</a></span>.<a href="#section-note.1-3" class="pilcrow">¶</a></p>
 <p id="section-note.1-4">Source for this draft and an issue tracker can be found at
-        <span><a href="https://github.com/USER/REPO">https://github.com/USER/REPO</a></span>.<a href="#section-note.1-4" class="pilcrow">¶</a></p>
+        <span><a href="https://github.com/jricher/draft-richer-oauth-oob-authcode">https://github.com/jricher/draft-richer-oauth-oob-authcode</a></span>.<a href="#section-note.1-4" class="pilcrow">¶</a></p>
 </section>
 <div id="status-of-memo">
 <section id="section-boilerplate.1">
@@ -1114,7 +1115,7 @@ svg {
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 18 March 2027.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 1 April 2027.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1145,24 +1146,62 @@ svg {
 <nav class="toc"><ul class="compact toc ulBare ulEmpty">
 <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1">
             <p id="section-toc.1-1.1.1" class="keepWithNext"><a href="#section-1" class="auto internal xref">1</a>.  <a href="#name-introduction" class="internal xref">Introduction</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1.2.1">
+                <p id="section-toc.1-1.1.2.1.1" class="keepWithNext"><a href="#section-1.1" class="auto internal xref">1.1</a>.  <a href="#name-terminology" class="internal xref">Terminology</a></p>
+</li>
+            </ul>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2">
-            <p id="section-toc.1-1.2.1" class="keepWithNext"><a href="#section-2" class="auto internal xref">2</a>.  <a href="#name-conventions-and-definitions" class="internal xref">Conventions and Definitions</a></p>
+            <p id="section-toc.1-1.2.1"><a href="#section-2" class="auto internal xref">2</a>.  <a href="#name-out-of-band-authorization-c" class="internal xref">Out of Band Authorization Code Transfer</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.1">
+                <p id="section-toc.1-1.2.2.1.1" class="keepWithNext"><a href="#section-2.1" class="auto internal xref">2.1</a>.  <a href="#name-creating-the-combined-code" class="internal xref">Creating the Combined Code</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.2">
+                <p id="section-toc.1-1.2.2.2.1"><a href="#section-2.2" class="auto internal xref">2.2</a>.  <a href="#name-processing-the-combined-cod" class="internal xref">Processing the Combined Code</a></p>
+</li>
+            </ul>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3">
-            <p id="section-toc.1-1.3.1" class="keepWithNext"><a href="#section-3" class="auto internal xref">3</a>.  <a href="#name-security-considerations" class="internal xref">Security Considerations</a></p>
+            <p id="section-toc.1-1.3.1"><a href="#section-3" class="auto internal xref">3</a>.  <a href="#name-limitations-and-implementat" class="internal xref">Limitations and Implementation Considerations</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.1">
+                <p id="section-toc.1-1.3.2.1.1"><a href="#section-3.1" class="auto internal xref">3.1</a>.  <a href="#name-helper-page" class="internal xref">Helper Page</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.2">
+                <p id="section-toc.1-1.3.2.2.1"><a href="#section-3.2" class="auto internal xref">3.2</a>.  <a href="#name-stateless-clients" class="internal xref">Stateless Clients</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.3">
+                <p id="section-toc.1-1.3.2.3.1"><a href="#section-3.3" class="auto internal xref">3.3</a>.  <a href="#name-fall-through-for-static-pag" class="internal xref">Fall-through For Static Pages</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.4">
+                <p id="section-toc.1-1.3.2.4.1"><a href="#section-3.4" class="auto internal xref">3.4</a>.  <a href="#name-issuer-parameter" class="internal xref">Issuer Parameter</a></p>
+</li>
+            </ul>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4">
-            <p id="section-toc.1-1.4.1"><a href="#section-4" class="auto internal xref">4</a>.  <a href="#name-iana-considerations" class="internal xref">IANA Considerations</a></p>
+            <p id="section-toc.1-1.4.1"><a href="#section-4" class="auto internal xref">4</a>.  <a href="#name-security-considerations" class="internal xref">Security Considerations</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5">
-            <p id="section-toc.1-1.5.1"><a href="#section-5" class="auto internal xref">5</a>.  <a href="#name-normative-references" class="internal xref">Normative References</a></p>
+            <p id="section-toc.1-1.5.1"><a href="#section-5" class="auto internal xref">5</a>.  <a href="#name-iana-considerations" class="internal xref">IANA Considerations</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6">
-            <p id="section-toc.1-1.6.1"><a href="#appendix-A" class="auto internal xref"></a><a href="#name-acknowledgments" class="internal xref">Acknowledgments</a></p>
+            <p id="section-toc.1-1.6.1"><a href="#section-6" class="auto internal xref">6</a>.  <a href="#name-references" class="internal xref">References</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.1">
+                <p id="section-toc.1-1.6.2.1.1"><a href="#section-6.1" class="auto internal xref">6.1</a>.  <a href="#name-normative-references" class="internal xref">Normative References</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.2">
+                <p id="section-toc.1-1.6.2.2.1"><a href="#section-6.2" class="auto internal xref">6.2</a>.  <a href="#name-informative-references" class="internal xref">Informative References</a></p>
+</li>
+            </ul>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7">
-            <p id="section-toc.1-1.7.1"><a href="#appendix-B" class="auto internal xref"></a><a href="#name-authors-address" class="internal xref">Author's Address</a></p>
+            <p id="section-toc.1-1.7.1"><a href="#appendix-A" class="auto internal xref"></a><a href="#name-acknowledgments" class="internal xref">Acknowledgments</a></p>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8">
+            <p id="section-toc.1-1.8.1"><a href="#appendix-B" class="auto internal xref"></a><a href="#name-authors-address" class="internal xref">Author's Address</a></p>
 </li>
         </ul>
 </nav>
@@ -1173,51 +1212,339 @@ svg {
       <h2 id="name-introduction">
 <a href="#section-1" class="section-number selfRef">1. </a><a href="#name-introduction" class="section-name selfRef">Introduction</a>
       </h2>
-<p id="section-1-1">TODO Introduction<a href="#section-1-1" class="pilcrow">¶</a></p>
-</section>
-</div>
-<div id="conventions-and-definitions">
-<section id="section-2">
-      <h2 id="name-conventions-and-definitions">
-<a href="#section-2" class="section-number selfRef">2. </a><a href="#name-conventions-and-definitions" class="section-name selfRef">Conventions and Definitions</a>
-      </h2>
-<p id="section-2-1">The key words "<span class="bcp14">MUST</span>", "<span class="bcp14">MUST NOT</span>", "<span class="bcp14">REQUIRED</span>", "<span class="bcp14">SHALL</span>", "<span class="bcp14">SHALL NOT</span>", "<span class="bcp14">SHOULD</span>", "<span class="bcp14">SHOULD NOT</span>", "<span class="bcp14">RECOMMENDED</span>", "<span class="bcp14">NOT RECOMMENDED</span>",
+<p id="section-1-1">The OAuth authorization code grant type defined in <span>[<a href="#OAUTH" class="cite xref">OAUTH</a>]</span> relies on the front-channel to communicate parameters between the client and authorization server (AS) using query parameters. This process relies on the resource owner's browser being able to launch a URI that is hosted on each of the AS and the client.<a href="#section-1-1" class="pilcrow">¶</a></p>
+<p id="section-1-2">In some circumstances, such as a command line client running on a remote terminal, the resource owner's browser cannot reach a URL hosted by the client. These kinds of clients have traditionally used alternatives such as the device code grant type <span>[<a href="#DEVICECODE" class="cite xref">DEVICECODE</a>]</span>, but the split between different grant types depending on where the client is running is a complication that requires server-side support, multiple network roundtrips (with polling), and potentially multiple different client registrations.<a href="#section-1-2" class="pilcrow">¶</a></p>
+<p id="section-1-3">Instead of using a different grant type, an out-of-band mechanism, such as the resource owner copying and pasting values into the waiting client, to deliver the authorization code and state value from the AS to the client. This process can be error prone as multiple separate values need to be transferred intact to the client without having their values conflated with each other.<a href="#section-1-3" class="pilcrow">¶</a></p>
+<p id="section-1-4">This specification defines a method to harden the out-of-band delivery of the <code>code</code> and <code>state</code> parameters to the client to be a single value that is less error-prone. No changes or participation by the AS is required (apart from a valid redirect_uri for the helper page).<a href="#section-1-4" class="pilcrow">¶</a></p>
+<div id="terminology">
+<section id="section-1.1">
+        <h3 id="name-terminology">
+<a href="#section-1.1" class="section-number selfRef">1.1. </a><a href="#name-terminology" class="section-name selfRef">Terminology</a>
+        </h3>
+<p id="section-1.1-1">The key words "<span class="bcp14">MUST</span>", "<span class="bcp14">MUST NOT</span>", "<span class="bcp14">REQUIRED</span>", "<span class="bcp14">SHALL</span>", "<span class="bcp14">SHALL NOT</span>", "<span class="bcp14">SHOULD</span>", "<span class="bcp14">SHOULD NOT</span>", "<span class="bcp14">RECOMMENDED</span>", "<span class="bcp14">NOT RECOMMENDED</span>",
 "<span class="bcp14">MAY</span>", and "<span class="bcp14">OPTIONAL</span>" in this document are to be interpreted as
 described in BCP 14 <span>[<a href="#RFC2119" class="cite xref">RFC2119</a>]</span> <span>[<a href="#RFC8174" class="cite xref">RFC8174</a>]</span> when, and only when, they
-appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶</a></p>
+appear in all capitals, as shown here.<a href="#section-1.1-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+</section>
+</div>
+<div id="protocol">
+<section id="section-2">
+      <h2 id="name-out-of-band-authorization-c">
+<a href="#section-2" class="section-number selfRef">2. </a><a href="#name-out-of-band-authorization-c" class="section-name selfRef">Out of Band Authorization Code Transfer</a>
+      </h2>
+<div id="section-2-1">
+        <div class="alignLeft art-svg artwork" id="section-2-1.1">
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="512" width="632" viewBox="0 0 632 512" class="diagram" text-anchor="middle" font-family="monospace" font-size="13px" stroke-linecap="round">
+            <path d="M 8,32 L 8,64" fill="none" stroke="black"></path>
+            <path d="M 56,72 L 56,464" fill="none" stroke="black"></path>
+            <path d="M 104,32 L 104,64" fill="none" stroke="black"></path>
+            <path d="M 136,32 L 136,64" fill="none" stroke="black"></path>
+            <path d="M 184,72 L 184,312" fill="none" stroke="black"></path>
+            <path d="M 184,328 L 184,464" fill="none" stroke="black"></path>
+            <path d="M 208,384 L 208,416" fill="none" stroke="black"></path>
+            <path d="M 232,32 L 232,64" fill="none" stroke="black"></path>
+            <path d="M 264,32 L 264,64" fill="none" stroke="black"></path>
+            <path d="M 312,72 L 312,120" fill="none" stroke="black"></path>
+            <path d="M 312,136 L 312,312" fill="none" stroke="black"></path>
+            <path d="M 312,328 L 312,464" fill="none" stroke="black"></path>
+            <path d="M 360,32 L 360,64" fill="none" stroke="black"></path>
+            <path d="M 392,32 L 392,64" fill="none" stroke="black"></path>
+            <path d="M 440,72 L 440,312" fill="none" stroke="black"></path>
+            <path d="M 440,328 L 440,464" fill="none" stroke="black"></path>
+            <path d="M 488,32 L 488,64" fill="none" stroke="black"></path>
+            <path d="M 520,32 L 520,64" fill="none" stroke="black"></path>
+            <path d="M 568,72 L 568,464" fill="none" stroke="black"></path>
+            <path d="M 592,256 L 592,288" fill="none" stroke="black"></path>
+            <path d="M 616,32 L 616,64" fill="none" stroke="black"></path>
+            <path d="M 8,32 L 104,32" fill="none" stroke="black"></path>
+            <path d="M 136,32 L 232,32" fill="none" stroke="black"></path>
+            <path d="M 264,32 L 360,32" fill="none" stroke="black"></path>
+            <path d="M 392,32 L 488,32" fill="none" stroke="black"></path>
+            <path d="M 520,32 L 616,32" fill="none" stroke="black"></path>
+            <path d="M 8,64 L 104,64" fill="none" stroke="black"></path>
+            <path d="M 136,64 L 232,64" fill="none" stroke="black"></path>
+            <path d="M 264,64 L 360,64" fill="none" stroke="black"></path>
+            <path d="M 392,64 L 488,64" fill="none" stroke="black"></path>
+            <path d="M 520,64 L 616,64" fill="none" stroke="black"></path>
+            <path d="M 192,96 L 208,96" fill="none" stroke="black"></path>
+            <path d="M 224,96 L 304,96" fill="none" stroke="black"></path>
+            <path d="M 192,128 L 208,128" fill="none" stroke="black"></path>
+            <path d="M 224,128 L 432,128" fill="none" stroke="black"></path>
+            <path d="M 320,160 L 336,160" fill="none" stroke="black"></path>
+            <path d="M 352,160 L 432,160" fill="none" stroke="black"></path>
+            <path d="M 320,192 L 336,192" fill="none" stroke="black"></path>
+            <path d="M 352,192 L 432,192" fill="none" stroke="black"></path>
+            <path d="M 448,224 L 464,224" fill="none" stroke="black"></path>
+            <path d="M 480,224 L 560,224" fill="none" stroke="black"></path>
+            <path d="M 576,256 L 592,256" fill="none" stroke="black"></path>
+            <path d="M 576,288 L 592,288" fill="none" stroke="black"></path>
+            <path d="M 64,320 L 80,320" fill="none" stroke="black"></path>
+            <path d="M 96,320 L 560,320" fill="none" stroke="black"></path>
+            <path d="M 64,352 L 80,352" fill="none" stroke="black"></path>
+            <path d="M 96,352 L 176,352" fill="none" stroke="black"></path>
+            <path d="M 192,384 L 208,384" fill="none" stroke="black"></path>
+            <path d="M 192,416 L 208,416" fill="none" stroke="black"></path>
+            <path d="M 192,448 L 208,448" fill="none" stroke="black"></path>
+            <path d="M 232,448 L 304,448" fill="none" stroke="black"></path>
+            <polygon class="arrowhead" points="584,288 572,282.4 572,293.6" fill="black" transform="rotate(180,576,288)"></polygon>
+            <polygon class="arrowhead" points="568,224 556,218.4 556,229.6" fill="black" transform="rotate(0,560,224)"></polygon>
+            <polygon class="arrowhead" points="440,192 428,186.4 428,197.6" fill="black" transform="rotate(0,432,192)"></polygon>
+            <polygon class="arrowhead" points="440,128 428,122.4 428,133.6" fill="black" transform="rotate(0,432,128)"></polygon>
+            <polygon class="arrowhead" points="328,160 316,154.4 316,165.6" fill="black" transform="rotate(180,320,160)"></polygon>
+            <polygon class="arrowhead" points="312,448 300,442.4 300,453.6" fill="black" transform="rotate(0,304,448)"></polygon>
+            <polygon class="arrowhead" points="312,96 300,90.4 300,101.6" fill="black" transform="rotate(0,304,96)"></polygon>
+            <polygon class="arrowhead" points="200,416 188,410.4 188,421.6" fill="black" transform="rotate(180,192,416)"></polygon>
+            <polygon class="arrowhead" points="184,352 172,346.4 172,357.6" fill="black" transform="rotate(0,176,352)"></polygon>
+            <polygon class="arrowhead" points="72,320 60,314.4 60,325.6" fill="black" transform="rotate(180,64,320)"></polygon>
+            <g class="text">
+              <text x="60" y="52">User</text>
+              <text x="188" y="52">Client</text>
+              <text x="316" y="52">AS</text>
+              <text x="440" y="52">Browser</text>
+              <text x="572" y="52">Helper</text>
+              <text x="216" y="100">1</text>
+              <text x="216" y="132">2</text>
+              <text x="344" y="164">3</text>
+              <text x="344" y="196">4</text>
+              <text x="472" y="228">5</text>
+              <text x="616" y="276">(6)</text>
+              <text x="88" y="324">7</text>
+              <text x="88" y="356">8</text>
+              <text x="232" y="404">(9)</text>
+              <text x="220" y="452">10</text>
+            </g>
+          </svg><a href="#section-2-1.1" class="pilcrow">¶</a>
+</div>
+</div>
+<ol start="1" type="1" class="normal type-1" id="section-2-2">
+<li id="section-2-2.1">
+          <p id="section-2-2.1.1">The client registers its helper page <code>https://c.example.com/callback</code> as a valid <code>redirect_uri</code><a href="#section-2-2.1.1" class="pilcrow">¶</a></p>
+</li>
+        <li id="section-2-2.2">
+          <p id="section-2-2.2.1">The client creates a <code>state</code> value and sends it with other parameters to the browser as part of the authorization URI; the client waits for a paste input<a href="#section-2-2.2.1" class="pilcrow">¶</a></p>
+</li>
+        <li id="section-2-2.3">
+          <p id="section-2-2.3.1">The browser fetches the authorization URI at the AS<a href="#section-2-2.3.1" class="pilcrow">¶</a></p>
+</li>
+        <li id="section-2-2.4">
+          <p id="section-2-2.4.1">The AS completes the OAuth transaction and creates a <code>code</code> value and sends this to the browser as part of the callback<a href="#section-2-2.4.1" class="pilcrow">¶</a></p>
+</li>
+        <li id="section-2-2.5">
+          <p id="section-2-2.5.1">The browser fetches the helper page with the <code>code</code> and <code>state</code> parameters<a href="#section-2-2.5.1" class="pilcrow">¶</a></p>
+</li>
+        <li id="section-2-2.6">
+          <p id="section-2-2.6.1">The helper page parses the <code>code</code> and <code>state</code> parameters in javascript and calculates the combined code using HKDF in <a href="#create" class="auto internal xref">Section 2.1</a><a href="#section-2-2.6.1" class="pilcrow">¶</a></p>
+</li>
+        <li id="section-2-2.7">
+          <p id="section-2-2.7.1">The user copies the combined code from the helper page<a href="#section-2-2.7.1" class="pilcrow">¶</a></p>
+</li>
+        <li id="section-2-2.8">
+          <p id="section-2-2.8.1">The user pastes the combined code into the client<a href="#section-2-2.8.1" class="pilcrow">¶</a></p>
+</li>
+        <li id="section-2-2.9">
+          <p id="section-2-2.9.1">The client uses its stored <code>state</code> value to derive the <code>code</code> value from the combined code in <a href="#process" class="auto internal xref">Section 2.2</a><a href="#section-2-2.9.1" class="pilcrow">¶</a></p>
+</li>
+        <li id="section-2-2.10">
+          <p id="section-2-2.10.1">The client presents the derived <code>code</code> value to the token endpoint for an access token, along with other parmeters<a href="#section-2-2.10.1" class="pilcrow">¶</a></p>
+</li>
+      </ol>
+<p id="section-2-3">Throughout this process, the client and AS need not have previously agreed on any shared secrets or encodings. The client does not start an HTTP server and does not receive the call to the redirect URI at all.<a href="#section-2-3" class="pilcrow">¶</a></p>
+<p id="section-2-4">The client does need to know the value of the INFO parameter of the HKDF that the helper page uses and use the same value.<a href="#section-2-4" class="pilcrow">¶</a></p>
+<div id="create">
+<section id="section-2.1">
+        <h3 id="name-creating-the-combined-code">
+<a href="#section-2.1" class="section-number selfRef">2.1. </a><a href="#name-creating-the-combined-code" class="section-name selfRef">Creating the Combined Code</a>
+        </h3>
+<p id="section-2.1-1">The <code>state</code> and <code>code</code> values are combined using a HKDF function <span>[<a href="#HKDF" class="cite xref">HKDF</a>]</span> and a simple bytewise XOR.<a href="#section-2.1-1" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="section-2.1-2">
+<pre>
+1.  C  = UTF8(code)
+2.  KS = HKDF(ikm  = UTF8(state),
+              salt = "" (zero-length),
+              info = INFO,
+              L    = len(C)) ; always the same length as C
+3.  E  = C ^ KS ; bytewise XOR
+4.  T  = SHA256(C)[0..2] ; checksum
+5.  CC = B64Uenc(T) || B64Uenc(E) ; concatenate the checksum
+</pre><a href="#section-2.1-2" class="pilcrow">¶</a>
+</div>
+<ol start="1" type="1" class="normal type-1" id="section-2.1-3">
+<li id="section-2.1-3.1">
+            <p id="section-2.1-3.1.1">The <code>code</code> is translated to UTF8 bytes. Since the authorization code is ASCII per <span>[<a href="#OAUTH" class="cite xref">OAUTH</a>]</span>, no additional encoding is needed for valid inputs.<a href="#section-2.1-3.1.1" class="pilcrow">¶</a></p>
+</li>
+          <li id="section-2.1-3.2">
+            <p id="section-2.1-3.2.1">The HKDF function creates a derived key based on the <code>state</code> value, the result that is exactly the same length as the <code>code</code> value.<a href="#section-2.1-3.2.1" class="pilcrow">¶</a></p>
+</li>
+          <li id="section-2.1-3.3">
+            <p id="section-2.1-3.3.1">The <code>code</code> value and the HKDF output are XORed together, bytewise, to create an encoded value E.<a href="#section-2.1-3.3.1" class="pilcrow">¶</a></p>
+</li>
+          <li id="section-2.1-3.4">
+            <p id="section-2.1-3.4.1">A 3-byte checksum is created by hashing the code value with <span>[<a href="#SHA256" class="cite xref">SHA256</a>]</span>.<a href="#section-2.1-3.4.1" class="pilcrow">¶</a></p>
+</li>
+          <li id="section-2.1-3.5">
+            <p id="section-2.1-3.5.1">The combined code CC is the concatenated checksum from (4) and the encoded value E from (3), both separately base64 URL encoded (with no padding). <span>[<a href="#BASE64" class="cite xref">BASE64</a>]</span><a href="#section-2.1-3.5.1" class="pilcrow">¶</a></p>
+</li>
+        </ol>
+<p id="section-2.1-4">The helper page <span class="bcp14">MUST</span> display the combined code value to the user.<a href="#section-2.1-4" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="process">
+<section id="section-2.2">
+        <h3 id="name-processing-the-combined-cod">
+<a href="#section-2.2" class="section-number selfRef">2.2. </a><a href="#name-processing-the-combined-cod" class="section-name selfRef">Processing the Combined Code</a>
+        </h3>
+<p id="section-2.2-1">When the client receives the combined code, it uses its <code>state</code> value and extracts the <code>code</code> value for use at the AS.<a href="#section-2.2-1" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="section-2.2-2">
+<pre>
+1.  T' = B64Udec(CC[0..3])
+2.  E  = B64Udec(CC[4..len(CC)])
+3.  KS = HKDF(ikm  = UTF8(state),
+              salt = "" (zero-length),
+              info = INFO,
+              L    = len(E))
+4.  C = E ^ KS ; bytewise XOR
+5.  T = SHA256(C)[0..2] ; checksum
+6.  If T != T': FAIL
+</pre><a href="#section-2.2-2" class="pilcrow">¶</a>
+</div>
+<ol start="1" type="1" class="normal type-1" id="section-2.2-3">
+<li id="section-2.2-3.1">
+            <p id="section-2.2-3.1.1">Extract the checksum as sent over the wire and decode it using Base64 URL with no padding <span>[<a href="#BASE64" class="cite xref">BASE64</a>]</span> into 3 bytes (4 Base64 chars).<a href="#section-2.2-3.1.1" class="pilcrow">¶</a></p>
+</li>
+          <li id="section-2.2-3.2">
+            <p id="section-2.2-3.2.1">Decode the remainder of the string into a byte array representing the encoded value E.<a href="#section-2.2-3.2.1" class="pilcrow">¶</a></p>
+</li>
+          <li id="section-2.2-3.3">
+            <p id="section-2.2-3.3.1">The HKDF function creates the derived key based on the <code>state</code> value, the result is exactly the same length as the encoded value E.<a href="#section-2.2-3.3.1" class="pilcrow">¶</a></p>
+</li>
+          <li id="section-2.2-3.4">
+            <p id="section-2.2-3.4.1">The combined code and the HKDF output are XORed together, bytewise, to extract the <code>code</code>.<a href="#section-2.2-3.4.1" class="pilcrow">¶</a></p>
+</li>
+          <li id="section-2.2-3.5">
+            <p id="section-2.2-3.5.1">A 3-byte checksum is created by hashing the extracted code value with <span>[<a href="#SHA256" class="cite xref">SHA256</a>]</span>.<a href="#section-2.2-3.5.1" class="pilcrow">¶</a></p>
+</li>
+          <li id="section-2.2-3.6">
+            <p id="section-2.2-3.6.1">If the checksum against the extracted code doesn't match the checksum sent over the wire, fail.<a href="#section-2.2-3.6.1" class="pilcrow">¶</a></p>
+</li>
+        </ol>
+<p id="section-2.2-4">Any combined codes equal to or fewer than the checksum length (4 characters / 3 decoded bytes) <span class="bcp14">MUST</span> be discarded.<a href="#section-2.2-4" class="pilcrow">¶</a></p>
+<p id="section-2.2-5">The client then uses the <code>code</code> value in its request to the token endpoint.<a href="#section-2.2-5" class="pilcrow">¶</a></p>
+<p id="section-2.2-6">If the <code>state</code> value doesn't match, the key derivation will fail to produce a valid code, and the token request will fail.<a href="#section-2.2-6" class="pilcrow">¶</a></p>
+</section>
+</div>
+</section>
+</div>
+<div id="implementation">
+<section id="section-3">
+      <h2 id="name-limitations-and-implementat">
+<a href="#section-3" class="section-number selfRef">3. </a><a href="#name-limitations-and-implementat" class="section-name selfRef">Limitations and Implementation Considerations</a>
+      </h2>
+<div id="helper-page">
+<section id="section-3.1">
+        <h3 id="name-helper-page">
+<a href="#section-3.1" class="section-number selfRef">3.1. </a><a href="#name-helper-page" class="section-name selfRef">Helper Page</a>
+        </h3>
+<p id="section-3.1-1">The helper page is designed to be a statically hosted page with no backend processing and no state. Consequently, any person (or attacker) could use the same page to create combined codes using this algorithm by providing arbitrary <code>code</code> and <code>state</code> values. As such, the use of this does not protect clients from theft of <code>code</code> and <code>state</code> values.<a href="#section-3.1-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="stateless-clients">
+<section id="section-3.2">
+        <h3 id="name-stateless-clients">
+<a href="#section-3.2" class="section-number selfRef">3.2. </a><a href="#name-stateless-clients" class="section-name selfRef">Stateless Clients</a>
+        </h3>
+<p id="section-3.2-1">In order to use this, a client needs to know its <code>state</code> value at the time the request comes in. Stateless clients that depend on the <code>state</code> value to bootstrap the request won't be able to extract the <code>code</code> value from a combined code and shouldn't use this method.<a href="#section-3.2-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="fallthrough">
+<section id="section-3.3">
+        <h3 id="name-fall-through-for-static-pag">
+<a href="#section-3.3" class="section-number selfRef">3.3. </a><a href="#name-fall-through-for-static-pag" class="section-name selfRef">Fall-through For Static Pages</a>
+        </h3>
+<p id="section-3.3-1">If the helper page is unable to process the HKDF calculation, such as JavaScript being disabled, the helper page <span class="bcp14">SHOULD</span> tell the user as much.<a href="#section-3.3-1" class="pilcrow">¶</a></p>
+<p id="section-3.3-2">To support such cases, the client <span class="bcp14">SHOULD</span> additionally support the user copying and pasting the entire helper page URL, with parameters, and extracting the <code>code</code> and <code>state</code> values directly, just as if the client had served the URL itself. For this case, there is no use of the HKDF to create a combined code.<a href="#section-3.3-2" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="issuer-parameter">
+<section id="section-3.4">
+        <h3 id="name-issuer-parameter">
+<a href="#section-3.4" class="section-number selfRef">3.4. </a><a href="#name-issuer-parameter" class="section-name selfRef">Issuer Parameter</a>
+        </h3>
+<p id="section-3.4-1">This process focuses only on the <code>code</code> and <code>state</code> parameters, and drops all other parameters including <code>iss</code>. This value could be used as the INFO parameter to the HKDF, but only if the client knows that the <code>iss</code> parameter is returned from the AS.<a href="#section-3.4-1" class="pilcrow">¶</a></p>
+</section>
+</div>
 </section>
 </div>
 <div id="security">
-<section id="section-3">
+<section id="section-4">
       <h2 id="name-security-considerations">
-<a href="#section-3" class="section-number selfRef">3. </a><a href="#name-security-considerations" class="section-name selfRef">Security Considerations</a>
+<a href="#section-4" class="section-number selfRef">4. </a><a href="#name-security-considerations" class="section-name selfRef">Security Considerations</a>
       </h2>
-<p id="section-3-1">TODO Security<a href="#section-3-1" class="pilcrow">¶</a></p>
+<p id="section-4-1">This process provides no additional security protections beyond that already provided by the basic authorization code grant. While cryptographic functions are used, the <code>code</code> value is still passed in the browser during the first steps and is not kept secret.<a href="#section-4-1" class="pilcrow">¶</a></p>
+<p id="section-4-2">The <code>code</code> and <code>state</code> values are passed to whatever server, CDN, or system serves the static helper page, including its mirrors and caches, as part of the HTTP GET request.<a href="#section-4-2" class="pilcrow">¶</a></p>
+<p id="section-4-3">The <code>state</code> value now needs to be cryptographically random enough to support the HKDF, and at the very least needs to be unique per request. Two identical (or guessable) state values could decode different codes on different requests.<a href="#section-4-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="iana">
-<section id="section-4">
+<section id="section-5">
       <h2 id="name-iana-considerations">
-<a href="#section-4" class="section-number selfRef">4. </a><a href="#name-iana-considerations" class="section-name selfRef">IANA Considerations</a>
+<a href="#section-5" class="section-number selfRef">5. </a><a href="#name-iana-considerations" class="section-name selfRef">IANA Considerations</a>
       </h2>
-<p id="section-4-1">This document has no IANA actions.<a href="#section-4-1" class="pilcrow">¶</a></p>
+<p id="section-5-1">This document has no IANA actions.<a href="#section-5-1" class="pilcrow">¶</a></p>
 </section>
 </div>
-<div id="sec-normative-references">
-<section id="section-5">
-      <h2 id="name-normative-references">
-<a href="#section-5" class="section-number selfRef">5. </a><a href="#name-normative-references" class="section-name selfRef">Normative References</a>
+<div id="sec-combined-references">
+<section id="section-6">
+      <h2 id="name-references">
+<a href="#section-6" class="section-number selfRef">6. </a><a href="#name-references" class="section-name selfRef">References</a>
       </h2>
+<div id="sec-normative-references">
+<section id="section-6.1">
+        <h3 id="name-normative-references">
+<a href="#section-6.1" class="section-number selfRef">6.1. </a><a href="#name-normative-references" class="section-name selfRef">Normative References</a>
+        </h3>
 <dl class="references">
+<dt id="BASE64">[BASE64]</dt>
+        <dd>
+<span class="refAuthor">Josefsson, S.</span>, <span class="refTitle">"The Base16, Base32, and Base64 Data Encodings"</span>, <span class="seriesInfo">RFC 4648</span>, <span class="seriesInfo">DOI 10.17487/RFC4648</span>, <time datetime="2006-10" class="refDate">October 2006</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc4648">https://www.rfc-editor.org/rfc/rfc4648</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="HKDF">[HKDF]</dt>
+        <dd>
+<span class="refAuthor">Krawczyk, H.</span> and <span class="refAuthor">P. Eronen</span>, <span class="refTitle">"HMAC-based Extract-and-Expand Key Derivation Function (HKDF)"</span>, <span class="seriesInfo">RFC 5869</span>, <span class="seriesInfo">DOI 10.17487/RFC5869</span>, <time datetime="2010-05" class="refDate">May 2010</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc5869">https://www.rfc-editor.org/rfc/rfc5869</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="OAUTH">[OAUTH]</dt>
+        <dd>
+<span class="refAuthor">Hardt, D., Ed.</span>, <span class="refTitle">"The OAuth 2.0 Authorization Framework"</span>, <span class="seriesInfo">RFC 6749</span>, <span class="seriesInfo">DOI 10.17487/RFC6749</span>, <time datetime="2012-10" class="refDate">October 2012</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc6749">https://www.rfc-editor.org/rfc/rfc6749</a>&gt;</span>. </dd>
+<dd class="break"></dd>
 <dt id="RFC2119">[RFC2119]</dt>
-      <dd>
+        <dd>
 <span class="refAuthor">Bradner, S.</span>, <span class="refTitle">"Key words for use in RFCs to Indicate Requirement Levels"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 2119</span>, <span class="seriesInfo">DOI 10.17487/RFC2119</span>, <time datetime="1997-03" class="refDate">March 1997</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc2119">https://www.rfc-editor.org/rfc/rfc2119</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC8174">[RFC8174]</dt>
-    <dd>
+        <dd>
 <span class="refAuthor">Leiba, B.</span>, <span class="refTitle">"Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 8174</span>, <span class="seriesInfo">DOI 10.17487/RFC8174</span>, <time datetime="2017-05" class="refDate">May 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8174">https://www.rfc-editor.org/rfc/rfc8174</a>&gt;</span>. </dd>
 <dd class="break"></dd>
+<dt id="SHA256">[SHA256]</dt>
+      <dd>
+<span class="refAuthor">Eastlake 3rd, D.</span> and <span class="refAuthor">T. Hansen</span>, <span class="refTitle">"US Secure Hash Algorithms (SHA and SHA-based HMAC and HKDF)"</span>, <span class="seriesInfo">RFC 6234</span>, <span class="seriesInfo">DOI 10.17487/RFC6234</span>, <time datetime="2011-05" class="refDate">May 2011</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc6234">https://www.rfc-editor.org/rfc/rfc6234</a>&gt;</span>. </dd>
+<dd class="break"></dd>
 </dl>
+</section>
+</div>
+<div id="sec-informative-references">
+<section id="section-6.2">
+        <h3 id="name-informative-references">
+<a href="#section-6.2" class="section-number selfRef">6.2. </a><a href="#name-informative-references" class="section-name selfRef">Informative References</a>
+        </h3>
+<dl class="references">
+<dt id="DEVICECODE">[DEVICECODE]</dt>
+      <dd>
+<span class="refAuthor">Denniss, W.</span>, <span class="refAuthor">Bradley, J.</span>, <span class="refAuthor">Jones, M.</span>, and <span class="refAuthor">H. Tschofenig</span>, <span class="refTitle">"OAuth 2.0 Device Authorization Grant"</span>, <span class="seriesInfo">RFC 8628</span>, <span class="seriesInfo">DOI 10.17487/RFC8628</span>, <time datetime="2019-08" class="refDate">August 2019</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8628">https://www.rfc-editor.org/rfc/rfc8628</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+</dl>
+</section>
+</div>
 </section>
 </div>
 <div id="acknowledgments">
@@ -1225,7 +1552,7 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
       <h2 id="name-acknowledgments">
 <a href="#name-acknowledgments" class="section-name selfRef">Acknowledgments</a>
       </h2>
-<p id="appendix-A-1">TODO acknowledge.<a href="#appendix-A-1" class="pilcrow">¶</a></p>
+<p id="appendix-A-1">Thank you to Jeff Lombardo for an early review of this work.<a href="#appendix-A-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="authors-addresses">
