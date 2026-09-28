@@ -38,8 +38,6 @@ normative:
 informative:
   DEVICECODE: RFC8628
 
-...
-
 --- abstract
 
 This client-side process allows clients to use the authorization code grant type without the ability to host the redirect_uri themselves. This process creates a single copyable value that the resource owner can copy from a simple helper page into the waiting client application.
@@ -114,7 +112,7 @@ The client does need to know the value of the INFO parameter of the HKDF that th
 
 The `state` and `code` values are combined using a HKDF function {{HKDF}} and a simple bytewise XOR.
 
-```
+~~~
 1.  C  = UTF8(code)
 2.  KS = HKDF(ikm  = UTF8(state),
               salt = "" (zero-length),
@@ -123,7 +121,7 @@ The `state` and `code` values are combined using a HKDF function {{HKDF}} and a 
 3.  E  = C ^ KS ; bytewise XOR
 4.  T  = SHA256(C)[0..2] ; checksum
 5.  CC = B64Uenc(T) || B64Uenc(E) ; concatenate the checksum
-```
+~~~
 
 1. The `code` is translated to UTF8 bytes. Since the authorization code is ASCII per {{OAUTH}}, no additional encoding is needed for valid inputs.
 2. The HKDF function creates a derived key based on the `state` value, the result that is exactly the same length as the `code` value.
@@ -137,7 +135,7 @@ The helper page MUST display the combined code value to the user.
 
 When the client receives the combined code, it uses its `state` value and extracts the `code` value for use at the AS.
 
-```
+~~~
 1.  T' = B64Udec(CC[0..3])
 2.  E  = B64Udec(CC[4..len(CC)])
 3.  KS = HKDF(ikm  = UTF8(state),
@@ -147,7 +145,7 @@ When the client receives the combined code, it uses its `state` value and extrac
 4.  C = E ^ KS ; bytewise XOR
 5.  T = SHA256(C)[0..2] ; checksum
 6.  If T != T': FAIL
-```
+~~~
 
 1. Extract the checksum as sent over the wire and decode it using Base64 URL with no padding {{BASE64}} into 3 bytes (4 Base64 chars).
 2. Decode the remainder of the string into a byte array representing the encoded value E.
