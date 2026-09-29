@@ -4,8 +4,8 @@
 
 Web Authorization Protocol                                     J. Richer
 Internet-Draft                                                   MongoDB
-Intended status: Informational                         28 September 2026
-Expires: 1 April 2027
+Intended status: Informational                         29 September 2026
+Expires: 2 April 2027
 
 
          Out of Band Authorization Code Delivery for OAuth 2.0
@@ -52,7 +52,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 1 April 2027.
+   This Internet-Draft will expire on 2 April 2027.
 
 Copyright Notice
 
@@ -128,34 +128,34 @@ Table of Contents
 
 2.  Out of Band Authorization Code Transfer
 
-  +-----------+   +-----------+   +-----------+   +-----------+   +-----------+
-  |    User   |   |   Client  |   |     AS    |   |  Browser  |   |   Helper  |
-  +-----------+   +-----------+   +-----------+   +-----------+   +-----------+
-        |               |               |               |               |
-        |               |--(1)--------->|               |               |
-        |               |               |               |               |
-        |               |--(2)------------------------->|               |
-        |               |               |               |               |
-        |               |               |<-(3)----------|               |
-        |               |               |               |               |
-        |               |               |--(4)--------->|               |
-        |               |               |               |               |
-        |               |               |               |--(5)--------->|
-        |               |               |               |               |
-        |               |               |               |               |--+
-        |               |               |               |               |  | (6)
-        |               |               |               |               |<-+
-        |               |               |               |               |
-        |<-(7)----------------------------------------------------------|
-        |               |               |               |               |
-        |--(8)--------->|               |               |               |
-        |               |               |               |               |
-        |               |--+            |               |               |
-        |               |  | (9)        |               |               |
-        |               |<-+            |               |               |
-        |               |               |               |               |
-        |               |--(10)-------->|               |               |
-        |               |               |               |               |
+     +---------+  +---------+  +---------+  +---------+  +---------+
+     |  User   |  | Client  |  |   AS    |  | Browser |  | Helper  |
+     +---------+  +---------+  +---------+  +---------+  +---------+
+          |            |            |            |            |
+          |            |--(1)------>|            |            |
+          |            |            |            |            |
+          |            |--(2)------------------->|            |
+          |            |            |            |            |
+          |            |            |<-(3)-------|            |
+          |            |            |            |            |
+          |            |            |--(4)------>|            |
+          |            |            |            |            |
+          |            |            |            |--(5)------>|
+          |            |            |            |            |
+          |            |            |            |            |--+
+          |            |            |            |            |  | (6)
+          |            |            |            |            |<-+
+          |            |            |            |            |
+          |<-(7)----------------------------------------------|
+          |            |            |            |            |
+          |--(8)------>|            |            |            |
+          |            |            |            |            |
+          |            |--+         |            |            |
+          |            |  | (9)     |            |            |
+          |            |<-+         |            |            |
+          |            |            |            |            |
+          |            |--(10)----->|            |            |
+          |            |            |            |            |
 
    1.   The client registers its helper page https://c.example.com/
         callback as a valid redirect_uri
@@ -369,7 +369,8 @@ Table of Contents
 
 Acknowledgments
 
-   Thank you to Jeff Lombardo for an early review of this work.
+   Thank you to Jeff Lombardo and Pieter Kasselman for an early review
+   of this work.
 
 Author's Address
 
