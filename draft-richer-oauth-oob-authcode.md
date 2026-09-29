@@ -198,4 +198,4 @@ This document has no IANA actions.
 # Acknowledgments
 {:numbered="false"}
 
-Thank you to Jeff Lombardo for an early review of this work.
+Thank you to Jeff Lombardo and Pieter Kasselman for an early review of this work.
